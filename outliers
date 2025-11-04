@@ -1,0 +1,12 @@
+# Detect volumes (timepoints) above threshold
+outlier_indices = np.where(fd_RL > threshold_RL)[0]
+
+print(f"FD threshold: {threshold_RL:.4f}")
+print(f"Outlier volumes: {outlier_indices.tolist()}")
+
+# ---- Store the outliers ----
+# Option 1: Save as a NumPy array
+np.save("fd_outliers_RL.npy", outlier_indices)
+
+# Option 2: Save as a simple text file (one index per line)
+np.savetxt("fd_outliers_RL.txt", outlier_indices, fmt="%d")
